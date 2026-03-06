@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Issues Tracker | The one platform to track your issues</title>
+    <title>Login - GitHub Issues Tracker | The one platform to track your issues</title>
     <!-- Tailwind & DaisyUI -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -24,7 +24,7 @@
 </head>
 
 <body class="flex items-center justify-center min-h-screen">
-    <main class="w-[520px] mx-auto rounded-lg shadow-lg border p-8 geist-font">
+    <main class="w-[520px] mx-auto rounded-lg shadow-lg p-8 geist-font">
         <div class="text-center">
             <img src="./assets/github-logo.png" alt="githublogo" class="mx-auto mb-6">
             <h1 class="font-semibold text-2xl text-[#1F2937]">GitHub Issues Tracker</h1>
@@ -39,10 +39,10 @@
             </div>
             <div>
                 <label for="password" class="text-[#1F2937] font-medium block mb-2">Passrword</label>
-                <input id="password" type="password" placeholder="Enter Password"
+                <input id="userpass" type="password" placeholder="Enter Password"
                     class="w-full p-4 mb-2 border-gray-300 rounded-lg">
                 <p class="text-[#4A00FF] mb-6">Default: admin123</p>
-                <button class="btn btn-primary w-full">Sign In</button>
+                <button id="sign-in-btn" class="btn btn-primary w-full">Sign In</button>
             </div>
         </form>
         <div class="w-11/12 mx-auto my-6 space-y-4 text-center">
