@@ -24,13 +24,13 @@
 </head>
 
 <body class="flex items-center justify-center min-h-screen">
-    <main class="w-[520px] mx-auto rounded-lg shadow-lg p-8 geist-font">
+    <main class="w-[520px] mx-auto rounded-lg shadow-lg p-8 geist-font max-sm:p-1 max-sm:m-4">
         <div class="text-center">
             <img src="./assets/github-logo.png" alt="githublogo" class="mx-auto mb-6">
             <h1 class="font-semibold text-2xl text-[#1F2937]">GitHub Issues Tracker</h1>
             <p class="text-[#64748B]">Sign in to manage your issues</p>
         </div>
-        <form action="" class="w-11/12 mx-auto my-6 space-y-4">
+        <form action="" class="w-11/12 mx-auto my-4 space-y-2">
             <div>
                 <label for="username" class="text-[#1F2937] font-medium block mb-2">Username</label>
                 <input id="username" type="text" placeholder="Enter Username"
@@ -41,7 +41,7 @@
                 <label for="password" class="text-[#1F2937] font-medium block mb-2">Passrword</label>
                 <input id="userpass" type="password" placeholder="Enter Password"
                     class="w-full p-4 mb-2 border-gray-300 rounded-lg">
-                <p class="text-[#4A00FF] mb-6">Default: admin123</p>
+                <p class="text-[#4A00FF] mb-4">Default: admin123</p>
                 <button id="sign-in-btn" class="btn btn-primary w-full">Sign In</button>
             </div>
         </form>
