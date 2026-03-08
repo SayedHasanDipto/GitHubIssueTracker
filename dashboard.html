@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Issues Tracker | The one platform to track your issues</title>
+    <!-- Tailwind & DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- fontawsome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- css link -->
+    <link rel="stylesheet" href="./index.css">
+</head>
+</head>
+
+<body>
+
+    <header class="container mx-auto my-4">
+        <nav class="navbar">
+            <div class="navbar-start">
+                <img src="./assets/githublogo.png" alt="githubLogo">
+                <a class="btn btn-ghost text-xl max-sm:hidden">GitHub Issues Tracker</a>
+            </div>
+            <div class="navbar-end space-x-3">
+                <label class="input text-base leading-[16px]">
+                    <i class="fa-brands fa-sistrix opacity-50"></i>
+                    <input type="search" class="grow w-[8rem]" placeholder="Search issues..." />
+                    <kbd class="kbd kbd-sm max-sm:hidden">⌘</kbd>
+                    <kbd class="kbd kbd-sm max-sm:hidden">K</kbd>
+                </label>
+
+                <div class="flex items-center text-base font-semibold btn btn-primary">
+                    <i class="fa-solid fa-plus"></i>
+                    <a>New <span class="max-sm:hidden">Issue</span></a>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    <main class="container mx-auto my-4 rounded-xl mt-16">
+        <!-- Toggle Button -->
+        <section class="p-6 shadow-sm mb-6">
+            <div class="flex gap-2">
+                <button class="btn btn-primary px-12 py-3">All</button>
+                <button class="btn px-12 py-3">All</button>
+                <button class="btn px-12 py-3">All</button>
+            </div>
+        </section>
+        <!-- Issue box -->
+        <section>
+            <div id="issueBox" class="flex shadow-sm justify-between items-center p-6">
+                <div class="flex items-center gap-3">
+                    <div class="bg-[#ECE4FF] p-3 rounded-full">
+                        <img src="./assets/Aperture.png" alt="aperrture">
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-semibold text-[#1F2937]">50 Issues</h1>
+                        <p class="text-[#64748B]">Track and manage your project issues</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <p>
+                        <i class="fa-solid fa-circle text-green-600"></i> Open
+                    </p>
+                    <p>
+                        <i class="fa-solid fa-circle text-violet-600"></i> Closed
+                    </p>
+                </div>
+            </div>
+            <div id="issue_card" class="grid grid-cols-4 max-sm:grid-cols-1 gap-4 p-6 shadow-sm">
+                <!-- <div class="p-4 border rounded-xl border-b-gray-200 border-l-gray-200 border-r-gray-200 border-t-green-600 border-t-4">
+                    <div class="border mb-1 rounded-lg border-gray-200 p-4">
+                        <div class="flex justify-between items-center">
+                            <img src="./assets/Open-Status.png" alt="openStatus">
+                            <button class="btn btn-soft btn-error rounded-full">HELP</button>
+                        </div>
+                        <div class="mb-3">
+                            <h1 class="font-semibold text-xl text-[#1F2937] mb-2">Fix navigation menu on mobile devices</h1>
+                            <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile
+                                devices...</p>
+                        </div>
+                        <div class="flex gap-2 items-center mb-4">
+                            <button class="btn btn-error text-lg btn-soft rounded-full">
+                                <i class="fa-solid fa-bug"></i>
+                                BUG
+                            </button>
+                            <button class="btn btn-warning text-lg btn-soft rounded-full">
+                                <i class="fa-solid fa-life-ring"></i>
+                                HELP WANTED
+                            </button>
+                        </div>
+                    </div>
+                    <div class="border rounded-lg border-gray-200 space-y-4 p-4">
+                        <p class="text-[#64748B] text-sm">#1 by john_doe</p>
+                        <p class="text-[#64748B] text-sm">1/15/2024</p>
+                    </div>
+                </div> -->
+            </div>
+        </section>
+    </main>
+
+
+
+
+    <script src="./script/dashboard.js"></script>
+</body>
+
+</html>

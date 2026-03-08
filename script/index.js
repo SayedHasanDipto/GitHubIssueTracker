@@ -7,7 +7,7 @@ signInBtn.addEventListener('click', function () {
     // console.log('Ype')
     if (userName.value == 'admin' && userPass.value == 'admin123') {
         console.log('yes we did it');
-        window.location.href = 'home.html';
+        window.location.href = 'dashboard.html';
     }
     else {
         alert('Please Enter The Right username and password');
