@@ -65,7 +65,7 @@ const displayIssue = (trees) => {
         issueContainer.className = '';
         issueContainer.innerHTML = `
         <div onclick="loadModal(${tree.id})">
-                <div class="p-4 border rounded-xl border-b-gray-200 h-full grid border-l-gray-200 border-r-gray-200 border-t-4 ${topBorderColor} shadow-sm">
+                <div class="p-4 border rounded-xl border-b-gray-200 h-[27rem] grid grid-rows-[auto_1fr_auto] border-l-gray-200 border-r-gray-200 border-t-4 ${topBorderColor} shadow-sm">
                     <div class="mb-1 rounded-lg p-4">
                         <div class="flex justify-between items-center mb-4">
                            <img src="${tree.status === 'open' ? './assets/Open-Status.png' : './assets/Closed- Status .png'}">
@@ -180,6 +180,11 @@ const displayModal = (modals) => {
     document.getElementById('modal_box').showModal();
     console.log(modals);
     const modalBox = document.getElementById('modalDetails');
+    const priority = modals.priority;
+    let priorityClass = "";
+    if (priority === "High") {
+        priorityClass = "bg-red-500 text-white border-none";
+    }
     modalBox.innerHTML = `
     
      <h3 class="text-2xl text-[#1F2937] mb-4 font-bold">
@@ -207,7 +212,7 @@ const displayModal = (modals) => {
             </div>
             <div class="flex-1">
                 <p class="text-[#64748B] mb-2">Priority:</p>
-                <button class="btn btn-error">Delete</button>
+                <span class="btn btn-sm ${priorityClass} pointer-events-none uppercase">${priority}</span>
             </div>
         </div>
 
