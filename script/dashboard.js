@@ -1,4 +1,6 @@
 let allIssues = [];
+let openIssue = [];
+let closeIssue = [];
 const issueCont = document.getElementById('issueCont');
 // For load issue
 async function loadIssue() {
@@ -79,3 +81,38 @@ const displayIssue = (trees) => {
 loadIssue();
 
 
+// filter Button
+
+
+const allcards = () => {
+    showSpinner(true)//lodding
+    fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+        .then((res) => res.json())
+        .then((data) => cardsection(data.data))
+}
+
+const allIssueCards = () => {
+    fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            issueCont;
+        });
+}
+
+const openIssueCard = () => {
+    fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
+        .then((res) => res.json())
+        .then((data) => {
+            const openIssues = data.data.filter(singleData => singleData.status === "open");
+            console.log(openIssues);
+        })
+}
+const closeIssueCard = () => {
+    fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
+        .then((res) => res.json())
+        .then((data) => {
+            const openIssues = data.data.filter(singleData => singleData.status === "closed");
+            console.log(openIssues);
+        })
+}
