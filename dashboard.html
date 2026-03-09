@@ -52,9 +52,9 @@
         <!-- Toggle Button -->
         <section class="p-6 shadow-sm mb-6">
             <div class="flex gap-2">
-                <button class="btn btn-primary px-12 py-3">All</button>
-                <button class="btn px-12 py-3">All</button>
-                <button class="btn px-12 py-3">All</button>
+                <button id="all-btn" class="btn btn-primary px-12 py-3">All</button>
+                <button id="open-btn" onclick="btnClicked()" class="btn px-12 py-3">Open</button>
+                <button id="close-btn" class="btn px-12 py-3">Close</button>
             </div>
         </section>
         <!-- Issue box -->
@@ -65,7 +65,10 @@
                         <img src="./assets/Aperture.png" alt="aperrture">
                     </div>
                     <div>
-                        <h1 class="text-xl font-semibold text-[#1F2937]">50 Issues</h1>
+                        <h1 class="text-xl font-semibold text-[#1F2937]">
+                            <span id="issues_count">0</span>
+                            Issues
+                        </h1>
                         <p class="text-[#64748B]">Track and manage your project issues</p>
                     </div>
                 </div>

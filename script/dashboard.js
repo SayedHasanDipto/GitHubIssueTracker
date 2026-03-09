@@ -1,3 +1,4 @@
+let allIssues = [];
 const issueCont = document.getElementById('issueCont');
 // For load issue
 async function loadIssue() {
@@ -9,17 +10,39 @@ async function loadIssue() {
 
 // For display issue by append in DOM
 const displayIssue = (trees) => {
+    issueCont.innerHTML = "";
     // console.log(trees);
     trees.forEach(tree => {
-        console.log(tree)
+        // console.log(tree);
+        const priority = tree.priority.toLowerCase();
+        let btnColor = '';
+        let topBorderColor = '';
+
+        if (priority === 'high') {
+            btnColor = 'btn-error';
+        } else if (priority === 'medium') {
+            btnColor = 'btn-warning';
+        } else {
+            btnColor = 'btn-soft';
+        }
+
+        // adding border color by status
+        const status = tree.status.toLowerCase();
+        if (status == 'open') {
+            topBorderColor = 'border-t-green-600';
+        }
+        else {
+            topBorderColor = 'border-t-purple-600';
+        }
+        // setting inner html
         const issueContainer = document.createElement('div');
         issueContainer.className = '';
         issueContainer.innerHTML = `
-        <div class="p-4 border rounded-xl border-b-gray-200 border-l-gray-200 border-r-gray-200 border-t-4 shadow-sm">
+        <div class="p-4 border rounded-xl border-b-gray-200 h-full grid border-l-gray-200 border-r-gray-200 border-t-4 ${topBorderColor} shadow-sm">
                     <div class="mb-1 rounded-lg p-4">
                         <div class="flex justify-between items-center mb-4">
                             <img src="./assets/Open-Status.png" alt="openStatus">
-                            <button id="btn-priority" class="btn btn-soft btn-error rounded-full">${tree.priority.toUpperCase()}</button>
+                            <button id="btn-priority" class="btn btn-soft ${btnColor} rounded-full">${tree.priority.toUpperCase()}</button>
                         </div>
                         <div class="mb-3">
                             <h1 class="font-semibold text-xl text-[#1F2937] mb-2">${tree.title}</h1>
@@ -45,7 +68,14 @@ const displayIssue = (trees) => {
                 `;
         issueCont.appendChild(issueContainer);
 
+        // issue count
+        const issuesCount = document.getElementById('issues_count');
+        if (issuesCount) {
+            issuesCount.innerText = trees.length;
+        }
     });
 }
 
 loadIssue();
+
+
