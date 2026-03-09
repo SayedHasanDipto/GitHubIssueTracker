@@ -48,18 +48,18 @@
             </div>
         </nav>
     </header>
-    <main class="container mx-auto my-4 rounded-xl mt-16">
+    <main class="container mx-auto my-4 rounded-xl mt-16 shadow-lg">
         <!-- Toggle Button -->
         <section class="p-6 shadow-sm mb-6">
             <div class="flex max-sm:flex-wrap gap-2">
-                <button id="all-btn" onclick="allIssueCards(); toggleButton('all-btn')" class="btn px-12 py-3 flex-1">All</button>
-                <button id="open-btn" onclick="openIssueCard(); toggleButton('open-btn')" class="btn px-12 py-3 flex-1">Open</button>
-                <button id="close-btn" onclick="closeIssueCard(); toggleButton('close-btn')" class="btn px-12 py-3 flex-1">Close</button>
+                <button id="all-btn" onclick="allIssueCards(); toggleButton('all-btn')" class="btn px-12 py-3 max-sm:flex-1">All</button>
+                <button id="open-btn" onclick="openIssueCard(); toggleButton('open-btn')" class="btn px-12 py-3 max-sm:flex-1">Open</button>
+                <button id="close-btn" onclick="closeIssueCard(); toggleButton('close-btn')" class="btn px-12 py-3 max-sm:flex-1">Close</button>
             </div>
         </section>
         <!-- Issue box -->
         <section>
-            <div id="issueBox" class="flex max-sm:flex-wrap max-sm:gap-[2rem] shadow-sm justify-between items-center p-6">
+            <div id="issueBox" class="flex max-sm:flex-wrap max-sm:gap-[2rem] border border-gray-100 justify-between items-center p-6">
                 <div class="flex items-center gap-3">
                     <div class="bg-[#ECE4FF] p-3 rounded-full">
                         <img src="./assets/Aperture.png" alt="aperrture">
@@ -81,7 +81,7 @@
                     </p>
                 </div>
             </div>
-            <div id="issueCont" class="grid grid-cols-4 max-sm:grid-cols-1 gap-4 p-6 shadow-sm"></div>
+            <div id="issueCont" class="grid grid-cols-4 max-sm:grid-cols-1 gap-4 p-6 border border-gray-100"></div>
         </section>
     </main>
 

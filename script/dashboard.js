@@ -2,7 +2,7 @@ const createElement = (arr) => {
     return arr.map((el) => {
         const label = el.toLowerCase();
         let colorClass = '';
-        let icon ='';
+        let icon = '';
         if (label === 'bug') {
             icon = '<i class="fa-solid fa-bug"></i>'
             colorClass = 'btn-error';
@@ -56,6 +56,9 @@ const displayIssue = (trees) => {
         else {
             topBorderColor = 'border-t-purple-600';
         }
+        // setting time right
+        const createdAt = new Date(tree.createdAt).toLocaleDateString();
+        const updatedAt = new Date(tree.updatedAt).toLocaleDateString();
         // setting inner html
         const issueContainer = document.createElement('div');
         issueContainer.className = '';
@@ -74,8 +77,14 @@ const displayIssue = (trees) => {
                     </div>
                     <hr/ class=" bg-gray-200 border-gray-200">
                     <div class="rounded-lg space-y-4 p-4">
-                        <p class="text-[#64748B] text-sm">#1 by john_doe</p>
-                        <p class="text-[#64748B] text-sm">1/15/2024</p>
+                        <div class="flex justify-between">
+                            <p class="text-[#64748B] text-sm">#${tree.id} ${tree.author}</p>
+                            <p class="text-[#64748B] text-sm">Create At: ${createdAt}</p>
+                            </div>
+                            <div class="flex justify-between">
+                            <p class="text-[#64748B] text-sm">Assignee: ${tree.assignee}</p>
+                            <p class="text-[#64748B] text-sm">Updated At: ${updatedAt}</p>
+                        </div>
                     </div>
                 </div>
                 `;
