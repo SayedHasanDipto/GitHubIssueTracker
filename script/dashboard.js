@@ -2,17 +2,22 @@ const createElement = (arr) => {
     return arr.map((el) => {
         const label = el.toLowerCase();
         let colorClass = '';
+        let icon ='';
         if (label === 'bug') {
+            icon = '<i class="fa-solid fa-bug"></i>'
             colorClass = 'btn-error';
         } else if (label === 'enhancement') {
+            icon = '<i class="fa-solid fa-wand-magic-sparkles"></i>'
             colorClass = 'btn-success';
         } else if (label === 'help wanted') {
+            icon = '<i class="fa-solid fa-life-ring"></i>'
             colorClass = 'btn-warning';
         } else {
             colorClass = 'btn-accent';
+            icon = '<i class="fa-solid fa-thumbs-up"></i>';
         }
 
-        return `<span class="px-3 py-1 rounded-full text-[12px] btn btn-soft font-bold uppercase ${colorClass}">${el}</span>`;
+        return `<span class="px-3 py-1 rounded-full text-[12px] btn btn-soft font-bold uppercase ${colorClass}">${icon} ${el}</span>`;
     }).join(' ');
 }
 
