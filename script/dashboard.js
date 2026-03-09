@@ -215,7 +215,27 @@ const displayModal = (modals) => {
                 <span class="btn btn-sm ${priorityClass} pointer-events-none uppercase">${priority}</span>
             </div>
         </div>
-
-
     `;
 }
+
+const searchField = document.getElementById("search");
+
+searchField.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        const query = event.target.value.toLowerCase().trim();
+        const issueContainer = document.getElementById("issueCont");
+        const allCards = issueContainer.children;
+        for (let i = 0; i < allCards.length; i++) {
+            const card = allCards[i];
+            const title = card.querySelector("h1, h2, h3")?.innerText.toLowerCase() || "";
+            const description = card.querySelector("p")?.innerText.toLowerCase() || "";
+            if (title.includes(query) || description.includes(query)) {
+                card.classList.remove("hidden");
+                card.classList.add("block");
+            } else {
+                card.classList.add("hidden");
+                card.classList.remove("block");
+            }
+        }
+    }
+});
