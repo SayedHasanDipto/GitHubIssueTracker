@@ -65,7 +65,7 @@ const displayIssue = (trees) => {
         issueContainer.className = '';
         issueContainer.innerHTML = `
         <div onclick="loadModal(${tree.id})">
-                <div class="p-4 border rounded-xl border-b-gray-200 h-[27rem] grid grid-rows-[auto_1fr_auto] border-l-gray-200 border-r-gray-200 border-t-4 ${topBorderColor} shadow-sm">
+                <div class="p-4 border rounded-xl border-b-gray-200 h-[27rem] max-sm:h-[33rem] grid grid-rows-[auto_auto_auto] border-l-gray-200 border-r-gray-200 border-t-4 ${topBorderColor} shadow-sm">
                     <div class="mb-1 rounded-lg p-4">
                         <div class="flex justify-between items-center mb-4">
                            <img src="${tree.status === 'open' ? './assets/Open-Status.png' : './assets/Closed- Status .png'}">
@@ -169,6 +169,11 @@ const closeIssueCard = () => {
             toggleSpinner(false);
         })
 }
+
+const newIssueButton = document.getElementById('new_issue');
+newIssueButton.addEventListener('click', () => {
+    alert('You Will Create Issues Soon. Please be patient');
+})
 
 
 const loadModal = (id) => {

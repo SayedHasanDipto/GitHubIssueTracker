@@ -26,11 +26,11 @@
 <body>
 
     <header class="container mx-auto my-4">
-        <nav class="navbar">
-            <div class="navbar-start">
+        <nav class="navbar justify-between">
+            <a id="logo" href="./dashboard.html" class="space-x-4 nav-start flex items-center">
                 <img src="./assets/githublogo.png" alt="githubLogo">
-                <a class="btn btn-ghost text-xl max-sm:hidden">GitHub Issues Tracker</a>
-            </div>
+                <p class="text-2xl font-semibold text-[#1F2937] max-sm:hidden">GitHub Issues Tracker</p>
+            </a>
             <div class="navbar-end space-x-3">
                 <label class="input text-base leading-[16px]">
                     <i class="fa-brands fa-sistrix opacity-50"></i>
@@ -39,7 +39,7 @@
                     <kbd class="kbd kbd-sm max-sm:hidden">K</kbd>
                 </label>
 
-                <div class="flex items-center text-base font-semibold btn btn-primary">
+                <div id="new_issue" class="flex items-center text-base font-semibold btn btn-primary">
                     <i class="fa-solid fa-plus"></i>
                     <a>New <span class="max-sm:hidden">Issue</span></a>
                 </div>
