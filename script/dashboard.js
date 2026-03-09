@@ -63,7 +63,8 @@ const displayIssue = (trees) => {
         const issueContainer = document.createElement('div');
         issueContainer.className = '';
         issueContainer.innerHTML = `
-        <div class="p-4 border rounded-xl border-b-gray-200 h-full grid border-l-gray-200 border-r-gray-200 border-t-4 ${topBorderColor} shadow-sm">
+        <div>
+                <div  onclick="my_modal_5.showModal()" class="p-4 border rounded-xl border-b-gray-200 h-full grid border-l-gray-200 border-r-gray-200 border-t-4 ${topBorderColor} shadow-sm">
                     <div class="mb-1 rounded-lg p-4">
                         <div class="flex justify-between items-center mb-4">
                            <img src="${tree.status === 'open' ? './assets/Open-Status.png' : './assets/Closed- Status .png'}">
@@ -79,7 +80,7 @@ const displayIssue = (trees) => {
                     <div class="rounded-lg space-y-4 p-4">
                         <div class="flex justify-between">
                             <p class="text-[#64748B] text-sm">#${tree.id} ${tree.author}</p>
-                            <p class="text-[#64748B] text-sm">Create At: ${createdAt}</p>
+                            <p class="text-[#64748B] text-sm">${createdAt}</p>
                             </div>
                             <div class="flex justify-between">
                             <p class="text-[#64748B] text-sm">Assignee: ${tree.assignee}</p>
@@ -87,6 +88,7 @@ const displayIssue = (trees) => {
                         </div>
                     </div>
                 </div>
+        </div>
                 `;
         issueCont.appendChild(issueContainer);
 
@@ -164,3 +166,37 @@ const closeIssueCard = () => {
 // Adding Level
 
 const issueLevel = [];
+
+
+// Modals
+const modals = document.createElement('div');
+
+modals.innerHTML = `
+     <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+    <h3 class="text-2xl text-[#1F2937] mb-4 font-bold">Fix broken image uploads</h3>
+    <div class="flex space-x-4 items-center">
+        <button class="btn btn-success px-2 rounded-full py-[6px] text-white">Opened</button>
+        <i class="fa-solid fa-circle text-xs text-[#64748B]"></i>
+        <p class="text-[#64748B]">Opened by Fahim Ahmed</p>
+        <i class="fa-solid fa-circle text-xs text-[#64748B]"></i>
+        <p class="text-[#64748B]">22/02/2026</p>
+    </div>
+
+
+
+
+    <!-- Modal Close Button -->
+    <div class="modal-action">
+        <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn">Close</button>
+        </form>
+    </div>
+</div>
+    </dialog>
+`;
+
+const modalContainer = document.getElementById('modals-container');
+
+modalContainer.appendChild(modals);
