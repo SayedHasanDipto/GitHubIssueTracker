@@ -1,10 +1,18 @@
 const createElement = (arr) => {
     return arr.map((el) => {
-        // Figma ডিজাইন অনুযায়ী স্টাইলিশ ক্লাস যোগ করা হয়েছে
-        const isBug = el.toLowerCase() === 'bug';
-        const colorClass = isBug ? 'btn-error btn btn-soft' : 'btn-warning btn btn-soft';
+        const label = el.toLowerCase();
+        let colorClass = '';
+        if (label === 'bug') {
+            colorClass = 'btn-error';
+        } else if (label === 'enhancement') {
+            colorClass = 'btn-success';
+        } else if (label === 'help wanted') {
+            colorClass = 'btn-warning';
+        } else {
+            colorClass = 'btn-accent';
+        }
 
-        return `<span class="px-3 py-1 rounded-full text-[12px] font-bold uppercase ${colorClass}">${el}</span>`;
+        return `<span class="px-3 py-1 rounded-full text-[12px] btn btn-soft font-bold uppercase ${colorClass}">${el}</span>`;
     }).join(' ');
 }
 
@@ -78,10 +86,11 @@ const displayIssue = (trees) => {
 
 loadIssue();
 
-// toggleing button
+// toggleing button and ading color
 const allBtn = document.getElementById('all-btn');
 const openBtn = document.getElementById('open-btn');
 const closedBtn = document.getElementById('close-btn');
+allBtn.classList.add('btn-primary');
 const toggleButton = (id) => {
     console.log(id);
     if (id === 'all-btn') {
@@ -90,7 +99,6 @@ const toggleButton = (id) => {
         closedBtn.classList.remove('btn-primary');
     }
     else if (id === 'open-btn') {
-        console.log('Open Button clicked');
         openBtn.classList.add('btn-primary');
         allBtn.classList.remove('btn-primary');
         closedBtn.classList.remove('btn-primary');
