@@ -106,13 +106,15 @@ const openIssueCard = () => {
         .then((data) => {
             const openIssues = data.data.filter(singleData => singleData.status === "open");
             console.log(openIssues);
+            displayIssue(openIssues)
         })
 }
 const closeIssueCard = () => {
     fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
         .then((res) => res.json())
         .then((data) => {
-            const openIssues = data.data.filter(singleData => singleData.status === "closed");
-            console.log(openIssues);
+            const closedIssues = data.data.filter(singleData => singleData.status === "closed");
+            console.log(closedIssues);
+            displayIssue(closedIssues)
         })
 }
