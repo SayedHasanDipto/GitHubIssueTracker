@@ -22,6 +22,7 @@ const createElement = (arr) => {
 }
 
 const issueCont = document.getElementById('issueCont');
+
 // For load issue
 async function loadIssue() {
     const res = await fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues');
@@ -68,7 +69,7 @@ const displayIssue = (trees) => {
                     <div class="mb-1 rounded-lg p-4">
                         <div class="flex justify-between items-center mb-4">
                            <img src="${tree.status === 'open' ? './assets/Open-Status.png' : './assets/Closed- Status .png'}">
-                            <button id="btn-priority" class="btn btn-soft ${btnColor} rounded-full">${tree.priority.toUpperCase()}</button>
+                            <button onclick="loadModal(${tree.id})" id="btn-priority" class="btn btn-soft ${btnColor} rounded-full">${tree.priority.toUpperCase()}</button>
                         </div>
                         <div class="mb-3">
                             <h1 class="font-semibold text-xl text-[#1F2937] mb-2">${tree.title}</h1>
@@ -161,4 +162,57 @@ const closeIssueCard = () => {
             // console.log(closedIssues);
             displayIssue(closedIssues);
         })
+}
+
+
+const loadModal = (id) => {
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+
+    fetch(url)
+        .then(res => res.json())
+        .then(details => {
+            displayModal(details.data);
+        })
+};
+
+const displayModal = (modals) => {
+
+
+    const createdAt = new Date(modals.createdAt).toLocaleDateString();
+    document.getElementById('modal_box').showModal();
+    console.log(modals);
+    const modalBox = document.getElementById('modalDetails');
+    modalBox.innerHTML = `
+    
+     <h3 class="text-2xl text-[#1F2937] mb-4 font-bold">
+        ${modals.title}
+     </h3>
+    <div class="flex space-x-4 items-center mb-6">
+        <button id="modal_details_btn" class="btn px-3 rounded-full py-[6px] text-white">${modals.status.toUpperCase()}</button>
+        <i class="fa-solid fa-circle text-xs text-[#64748B]"></i>
+        <p class="text-[#64748B]">Opene by ${modals.author}</p>
+        <i class="fa-solid fa-circle text-xs text-[#64748B]"></i>
+        <p class="text-[#64748B]">${createdAt}</p>
+       
+    </div>
+    <div class="space-y-6">
+
+        <div id="issueLabel" class="flex max-sm:flex-wrap gap-2 max-sm:space-y-2 items-center mb-4">${createElement(modals.labels)}</div>
+
+        <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.</p>
+        <div>
+
+        <div class="flex border">
+            <div class="flex-1 border border-red-600">
+                <p class="text-[#64748B]">Assignee:</p>
+                <h1 class="font-semibold text-[#1F2937]">Fahim Ahmed</h1>
+            </div>
+            <div class="flex-1 border border-red-600">
+                <p class="text-[#64748B]">Priority:</p>
+                
+            </div>
+        </div>
+
+
+    `;
 }
