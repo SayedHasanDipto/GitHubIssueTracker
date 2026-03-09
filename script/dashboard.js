@@ -208,7 +208,7 @@ const displayModal = (modals) => {
         <div class="flex">
             <div class="flex-1">
                 <p class="text-[#64748B] mb-2">Assignee:</p>
-                <h1 class="font-semibold text-[#1F2937]">Fahim Ahmed</h1>
+                <h1 class="font-semibold text-[#1F2937]">${modals.assignee}</h1>
             </div>
             <div class="flex-1">
                 <p class="text-[#64748B] mb-2">Priority:</p>
