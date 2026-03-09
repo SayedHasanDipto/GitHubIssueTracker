@@ -64,12 +64,12 @@ const displayIssue = (trees) => {
         const issueContainer = document.createElement('div');
         issueContainer.className = '';
         issueContainer.innerHTML = `
-        <div>
+        <div onclick="loadModal(${tree.id})">
                 <div class="p-4 border rounded-xl border-b-gray-200 h-full grid border-l-gray-200 border-r-gray-200 border-t-4 ${topBorderColor} shadow-sm">
                     <div class="mb-1 rounded-lg p-4">
                         <div class="flex justify-between items-center mb-4">
                            <img src="${tree.status === 'open' ? './assets/Open-Status.png' : './assets/Closed- Status .png'}">
-                            <button onclick="loadModal(${tree.id})" id="btn-priority" class="btn btn-soft ${btnColor} rounded-full">${tree.priority.toUpperCase()}</button>
+                            <button id="btn-priority" class="btn btn-soft ${btnColor} rounded-full">${tree.priority.toUpperCase()}</button>
                         </div>
                         <div class="mb-3">
                             <h1 class="font-semibold text-xl text-[#1F2937] mb-2">${tree.title}</h1>
@@ -176,8 +176,6 @@ const loadModal = (id) => {
 };
 
 const displayModal = (modals) => {
-
-
     const createdAt = new Date(modals.createdAt).toLocaleDateString();
     document.getElementById('modal_box').showModal();
     console.log(modals);
@@ -188,7 +186,7 @@ const displayModal = (modals) => {
         ${modals.title}
      </h3>
     <div class="flex space-x-4 items-center mb-6">
-        <button id="modal_details_btn" class="btn px-3 rounded-full py-[6px] text-white">${modals.status.toUpperCase()}</button>
+        <button id="modal_details_btn" class="btn px-3 rounded-full py-[6px]">${modals.status.toUpperCase()}</button>
         <i class="fa-solid fa-circle text-xs text-[#64748B]"></i>
         <p class="text-[#64748B]">Opene by ${modals.author}</p>
         <i class="fa-solid fa-circle text-xs text-[#64748B]"></i>
@@ -202,14 +200,14 @@ const displayModal = (modals) => {
         <p class="text-[#64748B]">The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.</p>
         <div>
 
-        <div class="flex border">
-            <div class="flex-1 border border-red-600">
-                <p class="text-[#64748B]">Assignee:</p>
+        <div class="flex">
+            <div class="flex-1">
+                <p class="text-[#64748B] mb-2">Assignee:</p>
                 <h1 class="font-semibold text-[#1F2937]">Fahim Ahmed</h1>
             </div>
-            <div class="flex-1 border border-red-600">
-                <p class="text-[#64748B]">Priority:</p>
-                
+            <div class="flex-1">
+                <p class="text-[#64748B] mb-2">Priority:</p>
+                <button class="btn btn-error">Delete</button>
             </div>
         </div>
 
