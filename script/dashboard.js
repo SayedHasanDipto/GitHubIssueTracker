@@ -1,3 +1,13 @@
+const createElement = (arr) => {
+    return arr.map((el) => {
+        // Figma ডিজাইন অনুযায়ী স্টাইলিশ ক্লাস যোগ করা হয়েছে
+        const isBug = el.toLowerCase() === 'bug';
+        const colorClass = isBug ? 'btn-error btn btn-soft' : 'btn-warning btn btn-soft';
+
+        return `<span class="px-3 py-1 rounded-full text-[12px] font-bold uppercase ${colorClass}">${el}</span>`;
+    }).join(' ');
+}
+
 const issueCont = document.getElementById('issueCont');
 // For load issue
 async function loadIssue() {
@@ -47,16 +57,7 @@ const displayIssue = (trees) => {
                             <h1 class="font-semibold text-xl text-[#1F2937] mb-2">${tree.title}</h1>
                             <p class="text-[#64748B]">${tree.description}</p>
                         </div>
-                        <div class="flex gap-2 items-center mb-4">
-                            <button class="btn btn-error text-lg btn-soft rounded-full">
-                                <i class="fa-solid fa-bug"></i>
-                                BUG
-                            </button>
-                            <button class="btn btn-warning text-lg btn-soft rounded-full">
-                                <i class="fa-solid fa-life-ring"></i>
-                                HELP WANTED
-                            </button>
-                        </div>
+                        <div id="issueLabel" class="flex gap-2 items-center mb-4">${createElement(tree.labels)}</div>
                     </div>
                     <hr/ class=" bg-gray-200 border-gray-200">
                     <div class="rounded-lg space-y-4 p-4">
@@ -137,3 +138,7 @@ const closeIssueCard = () => {
             displayIssue(closedIssues);
         })
 }
+
+// Adding Level
+
+const issueLevel = [];
