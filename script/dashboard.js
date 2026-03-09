@@ -73,7 +73,7 @@ const displayIssue = (trees) => {
                             <h1 class="font-semibold text-xl text-[#1F2937] mb-2">${tree.title}</h1>
                             <p class="text-[#64748B]">${tree.description}</p>
                         </div>
-                        <div id="issueLabel" class="flexmax-sm:flex-wrap gap-2 items-center mb-4">${createElement(tree.labels)}</div>
+                        <div id="issueLabel" class="flexmax-sm:flex-wrap gap-2 space-y-2 items-center mb-4">${createElement(tree.labels)}</div>
                     </div>
                     <hr/ class=" bg-gray-200 border-gray-200">
                     <div class="rounded-lg space-y-4 p-4">
