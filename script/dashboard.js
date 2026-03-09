@@ -111,16 +111,19 @@ allBtn.classList.add('btn-primary');
 const toggleButton = (id) => {
     console.log(id);
     if (id === 'all-btn') {
+        toggleSpinner(true);
         allBtn.classList.add('btn-primary');
         openBtn.classList.remove('btn-primary');
         closedBtn.classList.remove('btn-primary');
     }
     else if (id === 'open-btn') {
+        toggleSpinner(true);
         openBtn.classList.add('btn-primary');
         allBtn.classList.remove('btn-primary');
         closedBtn.classList.remove('btn-primary');
     }
     else if (id === 'close-btn') {
+        toggleSpinner(true);
         closedBtn.classList.add('btn-primary');
         allBtn.classList.remove('btn-primary');
         openBtn.classList.remove('btn-primary');
@@ -142,6 +145,7 @@ const allIssueCards = () => {
         .then((data) => {
             const allIssues = data.data;
             displayIssue(allIssues);
+            toggleSpinner(false);
         });
 }
 
@@ -152,6 +156,7 @@ const openIssueCard = () => {
             const openIssues = data.data.filter(singleData => singleData.status === "open");
             // console.log(openIssues);
             displayIssue(openIssues);
+            toggleSpinner(false);
         })
 }
 const closeIssueCard = () => {
@@ -161,6 +166,7 @@ const closeIssueCard = () => {
             const closedIssues = data.data.filter(singleData => singleData.status === "closed");
             // console.log(closedIssues);
             displayIssue(closedIssues);
+            toggleSpinner(false);
         })
 }
 
@@ -219,23 +225,29 @@ const displayModal = (modals) => {
 }
 
 const searchField = document.getElementById("search");
-
-searchField.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-        const query = event.target.value.toLowerCase().trim();
-        const issueContainer = document.getElementById("issueCont");
-        const allCards = issueContainer.children;
-        for (let i = 0; i < allCards.length; i++) {
-            const card = allCards[i];
-            const title = card.querySelector("h1, h2, h3")?.innerText.toLowerCase() || "";
-            const description = card.querySelector("p")?.innerText.toLowerCase() || "";
-            if (title.includes(query) || description.includes(query)) {
-                card.classList.remove("hidden");
-                card.classList.add("block");
-            } else {
-                card.classList.add("hidden");
-                card.classList.remove("block");
-            }
+searchField.addEventListener("input", function (event) {
+    const query = event.target.value.toLowerCase().trim();
+    const issueContainer = document.getElementById("issueCont");
+    const allCards = issueContainer.children;
+    for (let i = 0; i < allCards.length; i++) {
+        const card = allCards[i];
+        const title = card.querySelector("h1, h2, h3")?.innerText.toLowerCase() || "";
+        const description = card.querySelector("p")?.innerText.toLowerCase() || "";
+        if (title.includes(query) || description.includes(query)) {
+            card.classList.remove("hidden");
+            card.classList.add("block");
+        } else {
+            card.classList.add("hidden");
+            card.classList.remove("block");
         }
     }
 });
+const toggleSpinner = (isLoading) => {
+    const spinner = document.getElementById('loading-spinner');
+    if (isLoading) {
+        spinner.classList.remove('hidden');
+        issueCont.innerHTML = "";
+    } else {
+        spinner.classList.add('hidden');
+    }
+}
